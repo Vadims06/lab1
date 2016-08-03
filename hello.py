@@ -6,3 +6,4 @@ for i in range(10):
 print "Anothing else"
 for m in range(5):
 	print m
+print "DIFF"
