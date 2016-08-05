@@ -1,8 +1,20 @@
 #!/usr/bin/env python
 import urllib2
-from beautifulsoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup
 
-try:
-	html  = urlopen("http://network-class.net")
-except HTTPError as e:
-	print e
+def GetTitle(url):
+	try:
+		web = urllib2.urlopen(url)
+	except urllib2.URLError as e:
+		print e
+	try:
+		 soup = BeautifulSoup(web.read(), 'html.parser')
+		 title = soup.body.h1
+	except AttributeError as e:
+		 return None
+url = "http://network-class.net"
+title = GetTitle(url)
+if title == None:
+	print "There is no such title"
+else:
+	print title
